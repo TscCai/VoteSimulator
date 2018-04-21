@@ -39,21 +39,21 @@
         
         var voters = COMMON_CANDI.concat(VIP);
         
-		var vm = new VoteMachine(COMMON_CANDI, voters, OPTION, VA);
-		vm.init();
-		var vms=[];
-		vms.push(vm.performVote());
+		var vs = new VoteSimulator(COMMON_CANDI, voters, OPTION, VA);
+		vs.init();
+		var vss=[];
+		vss.push(vs.performVote());
 		
-		console.log(vms);
-		updateUI(vms[0].candidates, "outline", 0);
+		console.log(vss);
+		updateUI(vss[0].candidates, "outline", 0);
 				
-		vm = new VoteMachine(VIP, voters, OPTION, null);
-		vm.CDA = [0.9, 1, 1];
-		vm.init();
-		vms.push(vm.performVote());
+		vs = new VoteSimulator(VIP, voters, OPTION, null);
+		vs.CDA = [0.9, 1, 1];
+		vs.init();
+		vss.push(vs.performVote());
 		
-		updateUI(vms[1].candidates,"outline", vms[0].candidates.length);
-		//console.log(vms);
+		updateUI(vss[1].candidates,"outline", vss[0].candidates.length);
+		//console.log(vss);
         
         
         function updateUI(rst_c, id, offset){
@@ -89,8 +89,8 @@
             
             voter_id = sender.id;
             var offset = 0;
-            for(var i = 0; i < vms.length; i++){
-                var vote_info = vms[i].voters[voter_id].sent;
+            for(var i = 0; i < vss.length; i++){
+                var vote_info = vss[i].voters[voter_id].sent;
                 for(var j = 0; j < vote_info.length; j++){
                     var opt = vote_info[j].option;
                     var to = vote_info[j].to;
@@ -109,11 +109,11 @@
         function buildEmptyTable(){
             var str ="";
             var offset = 0;
-            for(var i = 0; i < vms.length; i++){
-                for(var j = 0; j < vms[i].candidates.length; j++){
-                    str += "<tr><td>"+vms[i].candidates[j].name+"</td><td id='t_"+(j+offset)+"'></td></tr>";
+            for(var i = 0; i < vss.length; i++){
+                for(var j = 0; j < vss[i].candidates.length; j++){
+                    str += "<tr><td>"+vss[i].candidates[j].name+"</td><td id='t_"+(j+offset)+"'></td></tr>";
                 }
-                offset += vms[i].candidates.length;
+                offset += vss[i].candidates.length;
             }
             return str;
         }

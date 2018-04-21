@@ -18,7 +18,7 @@ var Candidate = function(name){
     this.recieved = [];
 }
 
-var VoteMachine = function(candi, voters, options, voteArrange){
+var VoteSimulator = function(candi, voters, options, voteArrange){
     this.candidates = null;
     this.voters = null;
     this.options = options;
