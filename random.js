@@ -19,21 +19,21 @@ function randomArray(start, end){
     return arr;
 }
 
-// cda ÊÇÀÛ¼ÆÆµÂÊ·Ö²¼
-function randomInteger(start, end, cda){
-    if (cda == undefined){
+// cda ï¿½ï¿½ï¿½Û¼ï¿½Æµï¿½Ê·Ö²ï¿½
+function randomInteger(start, end, cdf){
+    if (cdf == undefined){
         return Math.round(Math.random() * (end-start) +start);
     }
     else {
         var flag = Math.random();
-        for(var i = 0; i < cda.length; i++){
+        for(var i = 0; i < cdf.length; i++){
             
-            if(cda[i] < flag && i+1 < cda.length){
-                if(cda[i+1] >= flag){
+            if(cdf[i] < flag && i+1 < cdf.length){
+                if(cdf[i+1] >= flag){
                     return start+i+1;
                 }
             }
-            else if(i+1 > cda.length || cda[0] >= flag){
+            else if(i+1 > cdf.length || cdf[0] >= flag){
                 return start + i;
             }
         }
